@@ -30,7 +30,7 @@ public class MonitorEnergia {
         for (int i= inicio -1; i < fim; i++){
             media+=consumo[i];
         }
-        return media/(fim - inicio);
+        return media/(fim - inicio + 1) ;
 
     }
 
