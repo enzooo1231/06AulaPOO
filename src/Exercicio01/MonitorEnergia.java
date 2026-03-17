@@ -1,3 +1,5 @@
+package Exercicio01;
+
 public class MonitorEnergia {
     double [] consumo;
     int indice;

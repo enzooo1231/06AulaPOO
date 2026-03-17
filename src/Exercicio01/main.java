@@ -1,3 +1,5 @@
+package Exercicio01;
+
 public class main {
     public static void main(String[] args) {
         MonitorEnergia monitor = new MonitorEnergia(100);
