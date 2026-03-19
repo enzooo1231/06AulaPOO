@@ -1,11 +1,13 @@
 package Exercicio03;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Principal {
     static BilheteUnico [] bilhete = new BilheteUnico[3];
     static Scanner sc = new Scanner(System.in);
     static int index;
+
 
     public static void main(String[] args) {
         int opcao;
@@ -20,13 +22,50 @@ public class Principal {
 
             switch (opcao){
                 case 1 -> cadastrar();
-
+                case 2 -> carregar();
+                case 3 -> consultarSaldo();
+                case 4 -> passarNaCatraca();
+                case 5 -> System.out.println("Até Breve!");
+                default -> System.out.println("Opção inválida!");
             }
-
+            System.out.println("\n");
+            System.out.println("--------------------------------------------------------");
         }while(opcao != 5);
     }
 
-     static void cadastrar() {
+    private static void passarNaCatraca() {
+
+        BilheteUnico bilheteUnico = pesquisar();
+        if (bilheteUnico != null){
+            if (bilheteUnico.passarNaCatraca() == false){
+                System.out.println("Saldo Insuficiente");
+            };
+            System.out.println("Saldo Atual R$" +bilheteUnico.saldo);
+        }
+
+    }
+
+    private static void consultarSaldo() {
+
+        DecimalFormat df = new DecimalFormat("#,##0.00");
+
+        BilheteUnico bilheteUnico = pesquisar();
+        if (bilheteUnico != null){
+            System.out.println("Valor disponivel: " + df.format(bilheteUnico.saldo));
+        }
+    }
+
+    private static void carregar() {
+        double valor;
+        BilheteUnico bilheteUnico = pesquisar();
+        if (bilheteUnico != null){
+            System.out.println("Digite o valor da recarga: ");
+            valor = sc.nextDouble();
+            bilheteUnico.carregar(valor);
+        }
+    }
+
+   private static void cadastrar() {
         String nome;
         long cpf;
         String tipoTarifa;
@@ -45,7 +84,7 @@ public class Principal {
         }
     }
 
-     BilheteUnico pesquisar(){
+    static BilheteUnico pesquisar(){
         long cpf;
          System.out.println("Qual CPF, para pesquis? ");
          cpf = sc.nextLong();
@@ -58,4 +97,7 @@ public class Principal {
          System.out.println("CPF não encontrado");
          return null;
      }
+
+
+
 }

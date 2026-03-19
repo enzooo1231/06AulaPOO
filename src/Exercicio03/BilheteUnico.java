@@ -29,7 +29,7 @@ public class BilheteUnico {
 
     double calcularTarifa(){
         double valor = tarifaBase;
-        if (usuario.tipoTarifa.equalsIgnoreCase("Esudante") || usuario.tipoTarifa.equalsIgnoreCase("Professor")){
+        if (usuario.tipoTarifa.equalsIgnoreCase("Estudante") || usuario.tipoTarifa.equalsIgnoreCase("Professor")){
             valor = tarifaBase / 2;
         }
         return valor;
@@ -38,10 +38,8 @@ public class BilheteUnico {
     public boolean passarNaCatraca() {
         double valor = calcularTarifa();
 
-
-        // verifica se tem saldo disponível
-        if(saldo <= valor) {
-            saldo = saldo - valor;
+        if(saldo >= valor) {
+            saldo -= valor;
             return true;
         }
         return false;
