@@ -1,10 +1,10 @@
 package Exercicio04;
 
-public class Usuario {
+public class Proprietario {
     String nome;
-    int cpf;
+    long cpf;
 
-    public Usuario(String nome, int cpf) {
+    public Proprietario(String nome, long cpf) {
         this.nome = nome;
         this.cpf = cpf;
     }
